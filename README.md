@@ -1,9 +1,9 @@
 # ENGR133PyTeamProject
-Import image to array
-print array to image using matplotlib
-image rotation
-image mirroring
-image smoothing/sharpening
+Import image to array -- Christos
+print array to image using matplotlib -- Thomas
+image rotation -- Marcus
+image mirroring -- Marcus
+image smoothing/sharpening -- Blake
 
 
 
