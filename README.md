@@ -2,7 +2,7 @@
 Import image to array -- Christos
 print array to image using matplotlib -- Thomas
 image rotation -- Marcus
-image mirroring -- Marcus
+image mirroring -- Christos
 image smoothing/sharpening -- Blake
 
 
