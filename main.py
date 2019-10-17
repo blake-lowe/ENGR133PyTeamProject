@@ -10,12 +10,12 @@ filepath = os.getcwd()+ "/boys.png"
 meNDaBoyz = ifta.importImage(filepath)
 print(meNDaBoyz)
 
-##MIRROR IMAGE
+## MIRROR IMAGE
 mirrored = im.mirrorH(filepath)
 print(mirrored)
 
 ## ROTATE IMAGE
-rotated = rp.rotate(meNDaBoyz)
+#rotated = rp.rotate(meNDaBoyz)
 
 ## OUTPUT FILE
-ati.outimage(name, rotated)
+ati.outimage(name, mirrored)
