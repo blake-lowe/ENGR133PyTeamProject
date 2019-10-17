@@ -1,6 +1,7 @@
 import import_file_to_array as ifta
 import image_mirroring as im
 import arraytoimage as ati
+import rotate_picture as rp
 import os
 name = input('Input output file name: ')
 
@@ -13,5 +14,8 @@ print(meNDaBoyz)
 mirrored = im.mirrorH(filepath)
 print(mirrored)
 
+## ROTATE IMAGE
+rotated = rp.rotate(meNDaBoyz)
+
 ## OUTPUT FILE
-ati.outimage(name, mirrored)
+ati.outimage(name, rotated)
