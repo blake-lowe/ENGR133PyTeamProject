@@ -1,3 +1,4 @@
+import numpy as np
 def rotate(image):
     h,w,c = image.shape
 
