@@ -18,4 +18,4 @@ def rotate(image):
 	    for (int j=0;j<m; j++)
 		    output [j][n-1-i] = input[i][j];
     
-    return output; ''''
+    return output; '''
