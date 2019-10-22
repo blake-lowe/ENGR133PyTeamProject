@@ -1,8 +1,12 @@
 import numpy as np
-import matplotlib as mp
+import matplotlib.image as mpimg
 
-def mirror(path):
-    image = mp.image.imread(path)
-    flipped = np.fliplr(image)
-    return flipped
-    
+
+def mirrorH(path):
+    image = mpimg.imread(path)
+    for i in range(0,len(image)):
+        for j in range(0,len(image[i])):
+            image[i][j],image[i][-j-1] = image[i][-j-1],image[i][j]
+
+    return image     
+ 

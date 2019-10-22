@@ -1,8 +1,10 @@
 import import_file_to_array as ifta
 import os
-from matplotlib import pyplot as plt
-
+import matplotlib as mpl
 
 filepath = os.getcwd()+ "/boys.png"
 meNDaBoyz = ifta.importImage(filepath)
-img = plt.imshow(meNDaBoyz)
+
+def outimage(name, array):
+    mpl.image.imsave(name + '.png', array)
+    return
