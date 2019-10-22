@@ -11,6 +11,7 @@ def process(imageData, blur, size):
     for i in range(0, len(imageData)):
         for j in range(0, len(imageData[0])):#for each pixel in image
             weightedAvg = [0, 0, 0, 0]
+            print("pixel done")
             for h in range(0, len(kernel)):
                 for k in range(0, len(kernel[0])):#for each number in kernel
                     dx = -len(kernel)//2 + h#relative change in pixel x
