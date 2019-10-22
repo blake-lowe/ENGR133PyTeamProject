@@ -4,10 +4,9 @@ import matplotlib.image as mpimg
 
 def mirrorH(path):
     image = mpimg.imread(path)
-    outimage = image
     for i in range(0,len(image)):
-        for j in range(0,len(image[i])//2):
-            outimage[i][j] = image[i][-j]
-        for j in range():
-            outimage[i][-j] = image[i][j]
-    return outimage
+        for j in range(0,len(image[i])):
+            image[i][j],image[i][-j-1] = image[i][-j-1],image[i][j]
+
+    return image     
+ 
