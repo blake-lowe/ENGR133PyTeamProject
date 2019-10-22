@@ -1,9 +1,43 @@
 
 import math
+import numpy as np
 
 
-def process(imageData):
-    return
+def process(imageData, kernel):
+    outimage = np.empty([imageData, imageData[0], 3])#create empty image with same dimensions as original
+    for i in range(0, len(imageData)):
+        for j in range(0, len(imageData[0])):#for each pixel in image
+            weightedAvg = [0, 0, 0, 0]
+            for h in range(0, len(kernel)):
+                for k in range(0, len(kernel[0])):#for each number in kernel
+                    dx = -len(kernel)//2 + h#relative change in pixel x
+                    dy = -len(kernel)//2 + k#relative change in pixel y
+                    if((i+dx>=0 and i+dx<len(imageData)) and (j+dy >= 0 and j+dy<len(imageData[0]))):#if within original image
+                        pixel = imageData[i+dx][j+dy]
+                    elif((i+dx < 0 or i+dx>=len(imageData)) and (j+dy >= 0 and j+dy<len(imageData[0]))):#if only horizontally out of original
+                        if(i+dx < 0):
+                            pixel = imageData[0][j+dy]
+                        elif(i+dx >= len(imageData)):
+                            pixel = imageData[-1][j+dy]
+                    elif((i+dx>=0 and i+dx<len(imageData)) and (j+dy < 0 or j+dy >len(imageData[0]))):#if vertically out of original
+                        if(j+dy < 0):
+                            pixel = imageData[i+dx][0]
+                        elif(j+dy >= len(imageData)):
+                            pixel = imageData[i+dx][-1]
+                    else:#if corner out of original
+                        if(i+dx < 0 and j+dy < 0):#top left
+                            pixel = imageData[0][0]
+                        elif(i+dx < 0 and j+dy > len(imageData[0])):#bottom left
+                            pixel = imageData[0][-1]
+                        elif(i+dx > len(imageData) and j+dy < 0):#top right
+                            pixel = imageData[-1][0]
+                        elif(i+dx > len(imageData) and j+dy > len(imageData[0])):#bottom right
+                            pixel = imageData[-1][-1]
+
+                    for c in range(0, len(weightedAvg)):
+                            weightedAvg[c] += kernel[h][k]*pixel[c]
+
+    return outimage
 
 def getKernel(size, stddev):#odd integer size of square kernel, spread in both directions
     kernel = []
@@ -19,7 +53,7 @@ def getKernel(size, stddev):#odd integer size of square kernel, spread in both d
     kernel = normalizeArray(kernel)
     return kernel
 
-def gaussian2D(x, y, stddev):
+def gaussian2D(x, y, stddev):#return the gaussian2D function evaluated at x and y
     A = 1/(2*math.pi*stddev*stddev)
     return A*math.exp(-(x*x+y*y)/(2*stddev*stddev))
 
