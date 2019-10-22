@@ -1,5 +1,6 @@
 import numpy as np
 
+##Takes the image array and returns it as a gray image by using the weighted average RBG formula
 def makeGray(image):
     for i in range(len(image)):
         for j in range(len(image[i])):
@@ -12,5 +13,5 @@ def makeGray(image):
             Avg = 0.2989*r+0.5780*g+0.1140*b
             ## Reassigns colors to the average
             image[i][j][0], image[i][j][1], image[i][j][2] = Avg,Avg,Avg
-            
+
     return image
