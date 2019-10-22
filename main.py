@@ -3,6 +3,7 @@ import image_mirroring as im
 import arraytoimage as ati
 import rotate_picture as rp
 import grayscale as gs
+import blur as bl
 import os
 
 name = input('Input output file name: ')
@@ -15,6 +16,8 @@ meNDaBoyz = ifta.importImage(filepath)
 ## MIRROR IMAGE
 #mirrored = im.flipIt(meNDaBoyz)
 
+## BLUR IMAGE
+blurred = bl.process(meNDaBoyz)
 
 ## ROTATE IMAGE
 rotated = rp.rotate(meNDaBoyz, 180)
@@ -23,4 +26,4 @@ rotated = rp.rotate(meNDaBoyz, 180)
 gray = gs.makeGray(meNDaBoyz)
 
 ## OUTPUT FILE
-ati.outimage(name, gray)
+ati.outimage(name, blurred)
