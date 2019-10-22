@@ -8,11 +8,11 @@ name = input('Input output file name: ')
 ## TEST IMPORT FILE TO ARRAY
 filepath = os.getcwd()+ "/boys.png"
 meNDaBoyz = ifta.importImage(filepath)
-print(meNDaBoyz)
+#print(meNDaBoyz)
 
 ## MIRROR IMAGE
-mirrored = im.mirrorH(filepath)
-print(mirrored)
+mirrored = im.mirrorH(meNDaBoyz)
+#print(mirrored)
 
 ## ROTATE IMAGE
 #rotated = rp.rotate(meNDaBoyz)
