@@ -4,21 +4,23 @@ import arraytoimage as ati
 import rotate_picture as rp
 import grayscale as gs
 import os
+
 name = input('Input output file name: ')
 
-## TEST IMPORT FILE TO ARRAY
+## IMPORT TEST FILE TO ARRAY
 filepath = os.getcwd()+ "/boys.png"
 meNDaBoyz = ifta.importImage(filepath)
-#print(meNDaBoyz)
+
 
 ## MIRROR IMAGE
 #mirrored = im.flipV(meNDaBoyz)
-#print(mirrored)
+
 
 ## ROTATE IMAGE
 #rotated = rp.rotate(meNDaBoyz)
 
 ## GRAYSCALE
 gray = gs.makeGray(meNDaBoyz)
+
 ## OUTPUT FILE
 ati.outimage(name, gray)
