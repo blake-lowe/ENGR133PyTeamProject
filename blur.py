@@ -7,7 +7,7 @@ def process(imageData, blur, size):
     if(size%2 == 0):
         size += 1
     kernel = getKernel(size, blur)
-    outimage = np.empty([imageData, imageData[0], 3])#create empty image with same dimensions as original
+    outimage = np.empty([len(imageData), len(imageData[0]), 3])#create empty image with same dimensions as original
     for i in range(0, len(imageData)):
         for j in range(0, len(imageData[0])):#for each pixel in image
             weightedAvg = [0, 0, 0, 0]
