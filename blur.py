@@ -3,7 +3,10 @@ import math
 import numpy as np
 
 
-def process(imageData, kernel):
+def process(imageData, blur, size):
+    if(size%2 == 0):
+        size += 1
+    kernel = getKernel(size, blur)
     outimage = np.empty([imageData, imageData[0], 3])#create empty image with same dimensions as original
     for i in range(0, len(imageData)):
         for j in range(0, len(imageData[0])):#for each pixel in image
