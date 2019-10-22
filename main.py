@@ -17,7 +17,7 @@ meNDaBoyz = ifta.importImage(filepath)
 
 
 ## ROTATE IMAGE
-#rotated = rp.rotate(meNDaBoyz)
+rotated = rp.rotate(meNDaBoyz, 180)
 
 ## GRAYSCALE
 gray = gs.makeGray(meNDaBoyz)
