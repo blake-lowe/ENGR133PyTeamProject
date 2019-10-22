@@ -13,7 +13,7 @@ meNDaBoyz = ifta.importImage(filepath)
 
 
 ## MIRROR IMAGE
-#mirrored = im.flipV(meNDaBoyz)
+#mirrored = im.flipIt(meNDaBoyz)
 
 
 ## ROTATE IMAGE

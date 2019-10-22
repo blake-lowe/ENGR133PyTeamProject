@@ -2,7 +2,7 @@ import numpy as np
 
 
  
-def flipV(image): #FLIPS THE IMAGE ACROSS VERTICAL AXIS
+def flipIt(image): #FLIPS THE IMAGE ACROSS VERTICAL AXIS
     outimage = np.empty([len(image),len(image[0]),4])
     for i in range(len(image)):
       for j in range(len(image[i])):
