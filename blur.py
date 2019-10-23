@@ -9,9 +9,10 @@ def process(imageData, blur, size):
     kernel = getKernel(size, blur)
     outimage = np.empty([len(imageData), len(imageData[0]), 4])#create empty image with same dimensions as original
     for i in range(0, len(imageData)):
+        print(f"pixel done ({i},{0})")
         for j in range(0, len(imageData[0])):#for each pixel in image
             weightedAvg = [0, 0, 0, 0]
-            print("pixel done")
+            
             for h in range(0, len(kernel)):
                 for k in range(0, len(kernel[0])):#for each number in kernel
                     dx = -len(kernel)//2 + h#relative change in pixel x
@@ -40,6 +41,8 @@ def process(imageData, blur, size):
 
                     for c in range(0, len(weightedAvg)):
                             weightedAvg[c] += kernel[h][k]*pixel[c]
+
+            outimage[i][j] = weightedAvg
 
     return outimage
 

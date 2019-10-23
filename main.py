@@ -17,7 +17,7 @@ meNDaBoyz = ifta.importImage(filepath)
 #mirrored = im.flipIt(meNDaBoyz)
 
 ## BLUR IMAGE
-blurred = bl.process(meNDaBoyz)
+blurred = bl.process(meNDaBoyz, 3, 5)
 
 ## ROTATE IMAGE
 rotated = rp.rotate(meNDaBoyz, 180)
