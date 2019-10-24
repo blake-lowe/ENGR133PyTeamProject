@@ -77,8 +77,3 @@ def normalizeArray(array):#2D array input
     
     #print(sum(sum(array,[])))
     return(array)
-
-
-
-print(getKernel(3, 5.5))
-print(gaussian2D(0, 0, 1))
