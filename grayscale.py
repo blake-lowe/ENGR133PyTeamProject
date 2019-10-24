@@ -1,3 +1,19 @@
+'''
+===============================================================================
+ENGR 133 Program Description 
+	This function takes an image array and converts the color values to grey. Then it returns the image array
+
+Assignment Information
+	Assignment:     Python Group Project
+	Author:         Marcus Lannie, mlannie@purdue.edu
+                    Christos Levy, levy30@purdue.edu
+                    Blake Lowe, lowe77@purdue.edu
+                    Thomas Weese, tweese@purdue.edu
+	Team ID:        002-10
+	
+===============================================================================
+'''
+
 import numpy as np
 
 ##Takes the image array and returns it as a gray image by using the weighted average RBG formula
