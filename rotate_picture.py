@@ -1,3 +1,20 @@
+'''
+===============================================================================
+ENGR 133 Program Description 
+	This function rotates an image 90 degrees counterclockwise
+
+Assignment Information
+	Assignment:     Python Group Project
+	Author:         Marcus Lannie, mlannie@purdue.edu
+                    Christos Levy, levy30@purdue.edu
+                    Blake Lowe, lowe77@purdue.edu
+                    Thomas Weese, tweese@purdue.edu
+	Team ID:        002-10
+	
+===============================================================================
+'''
+
+
 import numpy as np
 def rotate1(image): #ROTATES IMAGE 90 DEGREES COUNTERCLOCKWISE
     h,w,c = image.shape #INTIALIZES VARIABLES FOR THE HEIGHT, WIDTH, AND COLORS OF THE SHAPE

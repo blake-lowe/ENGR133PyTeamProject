@@ -1,3 +1,18 @@
+'''
+===============================================================================
+ENGR 133 Program Description 
+	This function takes an image array, a size number and a blur value and returns an array that contains a blurred image
+
+Assignment Information
+	Assignment:     Python Group Project
+	Author:         Marcus Lannie, mlannie@purdue.edu
+                    Christos Levy, levy30@purdue.edu
+                    Blake Lowe, lowe77@purdue.edu
+                    Thomas Weese, tweese@purdue.edu
+	Team ID:        002-10
+	
+===============================================================================
+'''
 
 import math
 import numpy as np

@@ -1,3 +1,18 @@
+'''
+===============================================================================
+ENGR 133 Program Description 
+	This function takes an image array an mirrors the photo across the vertical axis. It then returns the image array of the mirrored image
+Assignment Information
+	Assignment:     Python Group Project
+	Author:         Marcus Lannie, mlannie@purdue.edu
+                    Christos Levy, levy30@purdue.edu
+                    Blake Lowe, lowe77@purdue.edu
+                    Thomas Weese, tweese@purdue.edu
+	Team ID:        002-10
+	
+===============================================================================
+'''
+
 import numpy as np
 
 
