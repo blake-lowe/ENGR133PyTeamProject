@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 133 
 % Program Description 
-This program will return DO concentration using given values and the given equation
+%This program will return DO concentration using given values and the given equation
 %
 % Assignment Information
 %   Assignment:     Ma1_CFU
-ff%   Author:         Christos Levy, levy30@purdue.edu
+%   Author:         Christos Levy, levy30@purdue.edu
 %   Team ID:        002-10
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +27,7 @@ DO = DO_sat-((k1*L0)/(k2-k1))*(exp(-k1*t)-exp(-k2*t))-(D0*exp(-k2*t));
 
 %% ____________________
 %% OUTPUTS
-fprintf DO
+fprintf("Christos is %f\n",DO);
 
 %% ____________________
 %% ACADEMIC INTEGRITY STATEMENT
