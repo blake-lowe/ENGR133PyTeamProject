@@ -18,7 +18,7 @@ import numpy as np
 
  
 def flipIt(image): #FLIPS THE IMAGE ACROSS VERTICAL AXIS
-    outimage = np.empty([len(image),len(image[0]),4])
+    outimage = np.empty([len(image),len(image[0]),len(image[0][0])])
     for i in range(len(image)):
       for j in range(len(image[i])):
           outimage[i][j] = image[i][-j-1]  
@@ -26,6 +26,7 @@ def flipIt(image): #FLIPS THE IMAGE ACROSS VERTICAL AXIS
 
 
 ## THESE METHODS ARE UNIMPLEMENTED IN THE MAIN
+
 
 def flipH(image): #FLIPS IMAGE ACROSS HORIZONTAL AXIS
     outimage = np.empty([len(image),len(image[0]),4])

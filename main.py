@@ -1,3 +1,21 @@
+'''
+===============================================================================
+ENGR 133 Program Description 
+	Main Script to run all functions
+
+Assignment Information
+	Assignment:     Python Group Project
+	Author:         Marcus Lannie, mlannie@purdue.edu
+                    Christos Levy, levy30@purdue.edu
+                    Blake Lowe, lowe77@purdue.edu
+                    Thomas Weese, tweese@purdue.edu
+	Team ID:        002-10
+	
+===============================================================================
+'''
+
+## IMPORT FUNCTIONS
+import numpy as np
 import import_file_to_array as ifta
 import image_mirroring as im
 import arraytoimage as ati
@@ -6,61 +24,116 @@ import grayscale as gs
 import blur as bl
 import os
 
-isKilled = False
+## Asks for name of the file
 while True:
-    infName = input("Enter name of file to process with extention (.png only): ")
-    if(infName.lower() == "quit"):
-        isKilled = True
-        break
-    filepath = os.getcwd()+ "/" + infName
-    try:
-        inImage = ifta.importImage(filepath)
-        print("Image successfully imported!")
-        break
-    except:
-        print("File not found. Try again. (Type 'quit' to kill program)")
-
-outImage = [][][]
-if !isKilled:
+    isKilled = False
     while True:
-        print("Functions: blur, grayscale, rotate, mirror")
-        processName = input("Enter name of function: ").lower()
-        if(processName == "quit"):
+        infName = input("Enter name of file to process with extention (.png only): ")
+        if(infName.lower() == "quit"):
             isKilled = True
-            print("Killing program...")
             break
-        elif(processName == "blur"):#todo
-            print("You have chosen blur.")
-            break
-        elif(processName == "grayscale"):#done
-            print("You have chosen grayscale.")
-            outImage = gs.makeGray(inImage)
-            print("Image processing complete.")
-            break
-        elif(processName == "rotate"):#done
-            print("You have chosen rotate.")
-            degrees = 0
-            while True:
-                degrees = input("Enter number of degrees to rotate (must be divisible by 90)")
-                try:
-                    degrees = int(degrees)
-                except:
-                    print("Error: Input must be numeric")
-                    continue
-                if degrees%90 != 0:
-                    print("Error: degrees must be divisible by 90")
-                    continue
-                else:
-                    break
-            outImage = rp.rotate(inImage, degrees)
-            print("Image processing complete.")
-            break
-        elif(processName == "mirror"):#done
-            print("You have chosen mirror.")
-            im.flipIt(inImage)
-            break
-        else:#done
-            print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
+        filepath = os.getcwd()+ "/" + infName
 
-if !isKilled:
-    outfName = input("Enter name for output file without extension: ")
+        ## Converts image to an array after successful import
+        try:
+            inImage = ifta.importImage(filepath)
+            print("Image successfully imported!")
+            break
+
+        ## Repeats if the file isn't found
+        except:
+            print("File not found. Try again. (Type 'quit' to kill program)")
+            continue
+
+
+
+    if isKilled == False:
+        ## Asks user for desired function
+        while True:
+            print("Functions: blur, grayscale, rotate, mirror")
+            processName = input("Enter name of function: ").lower()
+            if(processName == "quit"):
+                isKilled = True
+                print("Killing program...")
+                break
+
+            ## Runs Blur Function and assures input values are (str, int, int)
+            elif(processName == "blur"):
+                print("You have chosen blur.")
+
+                ## Checks if the values are integers
+                while True:
+                    blurValue = input("Enter blur value: ")
+                    try:
+                        blurValue = int(blurValue)
+                        break
+                    except:
+                        print("Error: Blur value must be an integer")
+                        continue
+                while True:
+                    size = input("Enter size value: ")
+                    try:
+                        size = int(size)
+                        break
+                    except:
+                        print("Error: Size value must be an integer")
+                        continue
+                ## Creates blurred image
+                outImage = bl.process(inImage,blurValue,size)
+                break
+
+            ## Runs Grayscale Function
+            elif(processName == "grayscale"):
+                print("You have chosen grayscale.")
+                outImage = gs.makeGray(inImage)
+                print("Image processing complete.")
+                break
+
+            ## Runs Rotate Function
+            elif(processName == "rotate"):
+                print("You have chosen rotate.")
+                degrees = 0
+                while True:
+                    degrees = input("Enter number of degrees to rotate (must be divisible by 90)")
+
+                    ## Checks to see if input is a number
+                    try:
+                        degrees = int(degrees)
+                    except:
+                        print("Error: Input must be numeric")
+                        continue
+
+                    ## Checks if the number is a factor of 90
+                    if degrees%90 != 0:
+                        print("Error: degrees must be divisible by 90")
+                        continue
+                    else:
+                        break
+                outImage = rp.rotate(inImage, degrees)
+                print("Image processing complete.")
+                break
+
+            ## Runs mirror function
+            elif(processName == "mirror"):
+                print("You have chosen mirror.")
+                outImage = im.flipIt(inImage)
+                break
+
+            ## Prints an error if a function is not found
+            else:
+                print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
+
+    ## Creates and outputs the file to the directory
+    if isKilled == False:
+        fileName = input("Enter name for output file without extension: ")
+        ati.outimage(fileName,outImage)
+
+        ## Asks if user wishes to run again
+        runDecision = input("Run Again? (Y/N): ").lower()
+        if runDecision == "n":
+            print("Thank you for Using Da Boys Photo Manipulator!\n\n\n")
+            isKilled = True
+            break
+        else:
+            continue
+

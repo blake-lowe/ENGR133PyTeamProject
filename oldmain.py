@@ -9,12 +9,12 @@ import os
 name = input('Input output file name: ')
 
 ## IMPORT TEST FILE TO ARRAY
-filepath = os.getcwd()+ "/boys.png"
+filepath = os.getcwd()+ "/purdue.png"
 meNDaBoyz = ifta.importImage(filepath)
 
 
 ## MIRROR IMAGE
-#mirrored = im.flipIt(meNDaBoyz)
+mirrored = im.flipIt(meNDaBoyz)
 
 ## BLUR IMAGE
 blurred = bl.process(meNDaBoyz, 20, 9)
@@ -26,4 +26,4 @@ rotated = rp.rotate(meNDaBoyz, 180)
 gray = gs.makeGray(meNDaBoyz)
 
 ## OUTPUT FILE
-ati.outimage(name, blurred)
+ati.outimage(name, gray)

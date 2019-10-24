@@ -79,7 +79,6 @@ def gaussian2D(x, y, stddev):#return the gaussian2D function evaluated at x and 
     A = 1/(2*math.pi*stddev*stddev)
     return A*math.exp(-(x*x+y*y)/(2*stddev*stddev))
 
-
 def normalizeArray(array):#2D array input
     total = 0
     for i in range(len(array[0])):
