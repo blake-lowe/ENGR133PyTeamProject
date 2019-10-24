@@ -4,7 +4,7 @@ ENGR 133 Program Description
 	This function rotates an image 90 degrees counterclockwise
 
 Assignment Information
-	Assignment:     Py4_PA_Task1
+	Assignment:     Python Group Project
 	Author:         Marcus Lannie, mlannie@purdue.edu
 	Team ID:        002-10
 	
