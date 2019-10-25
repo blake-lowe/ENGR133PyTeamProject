@@ -21,7 +21,7 @@ import image_mirroring as im
 import arraytoimage as ati
 import rotate_picture as rp
 import grayscale as gs
-import blur as bl
+#import blur as bl ## Unimplemented
 import fastblur as fbl
 import os
 
@@ -51,48 +51,16 @@ while True:
     if isKilled == False:
         ## Asks user for desired function
         while True:
-            print("Functions: blur, fastblur, grayscale, rotate, mirror")
+            print("Functions: blur, grayscale, rotate, mirror")
             processName = input("Enter name of function: ").lower()
             if(processName == "quit"):
                 isKilled = True
                 print("Killing program...")
                 break
 
-            ## Runs Blur Function and assures input values are (str, float, int)
+            ## Runs FastBlur Function and assures input values are (str, float, int)
             elif(processName == "blur"):
                 print("You have chosen blur.")
-                blurValue = 0
-                size = 0
-                ## Checks if the values are correct data type and valid
-                while True:
-                    blurValue = input("Enter blur value: ")
-                    try:
-                        blurValue = float(blurValue)
-                        break
-                    except:
-                        print("Error: Blur value must be an float")
-                        continue
-                while True:
-                    size = input("Enter size value as an odd integer greater than or equal to 3: ")
-                    try:
-                        size = int(size)
-                    except:
-                        print("Error: Size value must be an integer")
-                        continue
-                    
-                    if size%2 == 0 or size < 3:
-                        print("Error: Size value must be odd and greater than or equal to 3.")
-                        continue
-                    else:
-                        break
-                ## Creates blurred image
-                outImage = bl.process(inImage,blurValue,size)
-                print("Image processing complete.")
-                break
-
-            ## Runs FastBlur Function and assures input values are (str, float, int)
-            elif(processName == "fastblur"):
-                print("You have chosen fastblur.")
                 blurValue = 0
                 size = 0
                 ## Checks if the values are correct data type and valid
@@ -171,7 +139,7 @@ while True:
         ## Asks if user wishes to run again
         runDecision = input("Run Again? (Y/N): ").lower()
         if runDecision == "n":
-            print("Thank you for Using Da Boys Photo Manipulator!\n\n\n")
+            print("Thank you for using the Python Deluxe Photo Editor!\n\n\n")
             isKilled = True
             break
         else:
