@@ -19,42 +19,39 @@ import numpy as np
 
 
 def process(imageData, blur, size):
+    channelCount = len(imageData[0][0])#determine if RGB or RGBA
+    rowCount = len(imageData)#for progress display
     if(size%2 == 0):
         size += 1
     kernel = getKernel(size, blur)
-    outimage = np.empty([len(imageData), len(imageData[0]), 4])#create empty image with same dimensions as original
+    outimage = np.empty([len(imageData), len(imageData[0]), channelCount])#create empty image with same dimensions as original
     for i in range(0, len(imageData)):
-        print(f"pixel done ({i},{0})")
+        print(f"Row {i}/{rowCount}")
         for j in range(0, len(imageData[0])):#for each pixel in image
-            weightedAvg = [0, 0, 0, 0]
+            weightedAvg = np.zeros(channelCount)
             
             for h in range(0, len(kernel)):
                 for k in range(0, len(kernel[0])):#for each number in kernel
                     dx = -len(kernel)//2 + h#relative change in pixel x
                     dy = -len(kernel)//2 + k#relative change in pixel y
-                    if((i+dx>=0 and i+dx<len(imageData)) and (j+dy >= 0 and j+dy<len(imageData[0]))):#if within original image
-                        pixel = imageData[i+dx][j+dy]
-                    elif((i+dx < 0 or i+dx>=len(imageData)) and (j+dy >= 0 and j+dy<len(imageData[0]))):#if only horizontally out of original
-                        if(i+dx < 0):
-                            pixel = imageData[0][j+dy]
-                        elif(i+dx >= len(imageData)):
-                            pixel = imageData[-1][j+dy]
-                    elif((i+dx>=0 and i+dx<len(imageData)) and (j+dy < 0 or j+dy >len(imageData[0]))):#if vertically out of original
-                        if(j+dy < 0):
-                            pixel = imageData[i+dx][0]
-                        elif(j+dy >= len(imageData)):
-                            pixel = imageData[i+dx][-1]
-                    else:#if corner out of original
-                        if(i+dx < 0 and j+dy < 0):#top left
-                            pixel = imageData[0][0]
-                        elif(i+dx < 0 and j+dy > len(imageData[0])):#bottom left
-                            pixel = imageData[0][-1]
-                        elif(i+dx > len(imageData) and j+dy < 0):#top right
-                            pixel = imageData[-1][0]
-                        elif(i+dx > len(imageData) and j+dy > len(imageData[0])):#bottom right
-                            pixel = imageData[-1][-1]
 
-                    for c in range(0, len(weightedAvg)):
+                    if i+dx >=0 and i+dx < len(imageData):#if pixel is out of bounds, extend the image
+                        pixelX = i+dx
+                    elif i+dx < 0:
+                        pixelX = 0
+                    elif i+dx >= len(imageData):
+                        pixelX = -1
+
+                    if j+dy >= 0 and j+dy < len(imageData[0]):
+                        pixelY = j+dy
+                    elif j+dy < 0:
+                        pixelY = 0
+                    elif j+dy > len(imageData):
+                        pixelY = -1
+
+                    pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
+
+                    for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
                             weightedAvg[c] += kernel[h][k]*pixel[c]
 
             outimage[i][j] = weightedAvg
