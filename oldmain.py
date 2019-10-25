@@ -26,4 +26,4 @@ rotated = rp.rotate(meNDaBoyz, 180)
 gray = gs.makeGray(meNDaBoyz)
 
 ## OUTPUT FILE
-ati.outimage(name, blurred)
+ati.outimage(name, rotated)

@@ -16,6 +16,7 @@ Assignment Information
 
 
 import numpy as np
+
 def rotate1(image): #ROTATES IMAGE 90 DEGREES COUNTERCLOCKWISE
     h,w,c = image.shape #INTIALIZES VARIABLES FOR THE HEIGHT, WIDTH, AND COLORS OF THE SHAPE
 
@@ -23,7 +24,7 @@ def rotate1(image): #ROTATES IMAGE 90 DEGREES COUNTERCLOCKWISE
 
     for i in range(h):
         for j in range(w):
-            empty_image[j, i] = image[i, j-1] #ROTATES EACH PIXEL 90 DEGREES COUNTERCLOCKWISE
+            empty_image[j, i] = image[i,j-1] #ROTATES EACH PIXEL 90 DEGREES COUNTERCLOCKWISE
     
     return(empty_image)
 

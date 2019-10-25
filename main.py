@@ -5,12 +5,16 @@ ENGR 133 Program Description
 
 Assignment Information
 	Assignment:     Python Group Project
+
 	Author:         Marcus Lannie, mlannie@purdue.edu
                     Christos Levy, levy30@purdue.edu
                     Blake Lowe, lowe77@purdue.edu
                     Thomas Weese, tweese@purdue.edu
+
 	Team ID:        002-10
 	
+    Copyright Da Boys ENGR 133 2019
+    All rights Reserved
 ===============================================================================
 '''
 
@@ -32,8 +36,9 @@ while True:
         if(infName.lower() == "quit"):
             isKilled = True
             break
+       
         filepath = os.getcwd()+ "/" + infName
-
+    
         ## Converts image to an array after successful import
         try:
             inImage = ifta.importImage(filepath)
@@ -44,6 +49,9 @@ while True:
         except:
             print("File not found. Try again. (Type 'quit' to kill program)")
             continue
+    if isKilled == True:
+        print("\n\n\n")
+        break 
 
 
 
@@ -54,9 +62,9 @@ while True:
             processName = input("Enter name of function: ").lower()
             if(processName == "quit"):
                 isKilled = True
-                print("Killing program...")
+                print("Killing program...\n\n\n")
                 break
-
+        
             ## Runs Blur Function and assures input values are (str, float, int)
             elif(processName == "blur"):
                 print("You have chosen blur.")
@@ -100,7 +108,7 @@ while True:
                 print("You have chosen rotate.")
                 degrees = 0
                 while True:
-                    degrees = input("Enter number of degrees to rotate (must be divisible by 90)")
+                    degrees = input("Enter number of degrees to rotate (must be divisible by 90): ")
 
                     ## Checks to see if input is a number
                     try:
@@ -128,6 +136,8 @@ while True:
             ## Prints an error if a function is not found
             else:
                 print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
+        if isKilled == True:
+            break    
 
     ## Creates and outputs the file to the directory
     if isKilled == False:
