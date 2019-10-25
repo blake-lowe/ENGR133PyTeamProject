@@ -41,7 +41,7 @@ def process(imageData, blur, size):
                 pixelX = i
                 pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
 
-                weightedAvg += np.multiply(kernel[h], pixel))#sum the corresponding ARGB or RGB numbers
+                weightedAvg += np.multiply(kernel[h], pixel)#sum the corresponding ARGB or RGB numbers
 
             outimage1[i][j] = weightedAvg#output to temp matrix
 

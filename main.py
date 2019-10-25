@@ -86,7 +86,8 @@ while True:
                     else:
                         break
                 ## Creates blurred image
-                outImage = fbl.process(inImage,blurValue,size)
+                outImage = bl.process(inImage,blurValue,size)
+                print("Image processing complete.")
                 break
 
             ## Runs FastBlur Function and assures input values are (str, float, int)
@@ -117,7 +118,8 @@ while True:
                     else:
                         break
                 ## Creates blurred image
-                outImage = bl.process(inImage,blurValue,size)
+                outImage = fbl.process(inImage,blurValue,size)
+                print("Image processing complete.")
                 break
 
             ## Runs Grayscale Function
