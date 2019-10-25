@@ -41,12 +41,9 @@ def process(imageData, blur, size):
                 pixelX = i
                 pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
 
-                #for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
-                #    weightedAvg[c] += kernel[h]*pixel[c]
-                weightedAvg += np.multiply(kernel[h], pixel)
-                #weightedAvg += kernel[h]*pixel
+                weightedAvg += np.multiply(kernel[h], pixel))#sum the corresponding ARGB or RGB numbers
 
-            outimage1[i][j] = weightedAvg
+            outimage1[i][j] = weightedAvg#output to temp matrix
 
     print("Halfway done!")
     
@@ -68,16 +65,11 @@ def process(imageData, blur, size):
                 pixelY = j
                 pixel = outimage1[pixelX][pixelY]#get pixel data for target pixel
 
-                #for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
-                #    weightedAvg[c] += kernel[k]*pixel[c]
                 weightedAvg += np.multiply(kernel[k], pixel)
-                #weightedAvg += kernel[h]*pixel
 
-            outimage2[i][j] = weightedAvg
-
-    
+            outimage2[i][j] = weightedAvg#output to matrix
             
-    return outimage2
+    return outimage2#return final image
 
 def getKernel(size, stddev):
     kernel = []

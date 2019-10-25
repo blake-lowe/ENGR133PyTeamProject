@@ -5,16 +5,12 @@ ENGR 133 Program Description
 
 Assignment Information
 	Assignment:     Python Group Project
-
 	Author:         Marcus Lannie, mlannie@purdue.edu
                     Christos Levy, levy30@purdue.edu
                     Blake Lowe, lowe77@purdue.edu
                     Thomas Weese, tweese@purdue.edu
-
 	Team ID:        002-10
 	
-    Copyright Da Boys ENGR 133 2019
-    All rights Reserved
 ===============================================================================
 '''
 
@@ -26,6 +22,7 @@ import arraytoimage as ati
 import rotate_picture as rp
 import grayscale as gs
 import blur as bl
+import fastblur as fbl
 import os
 
 ## Asks for name of the file
@@ -36,9 +33,8 @@ while True:
         if(infName.lower() == "quit"):
             isKilled = True
             break
-       
         filepath = os.getcwd()+ "/" + infName
-    
+
         ## Converts image to an array after successful import
         try:
             inImage = ifta.importImage(filepath)
@@ -49,28 +45,55 @@ while True:
         except:
             print("File not found. Try again. (Type 'quit' to kill program)")
             continue
-    if isKilled == True:
-        print("\n\n\n")
-        break 
 
 
 
     if isKilled == False:
         ## Asks user for desired function
         while True:
-            print("Functions: blur, grayscale, rotate, mirror")
+            print("Functions: blur, fastblur, grayscale, rotate, mirror")
             processName = input("Enter name of function: ").lower()
             if(processName == "quit"):
                 isKilled = True
-                print("Killing program...\n\n\n")
+                print("Killing program...")
                 break
-        
+
             ## Runs Blur Function and assures input values are (str, float, int)
             elif(processName == "blur"):
                 print("You have chosen blur.")
                 blurValue = 0
                 size = 0
-                
+                ## Checks if the values are correct data type and valid
+                while True:
+                    blurValue = input("Enter blur value: ")
+                    try:
+                        blurValue = float(blurValue)
+                        break
+                    except:
+                        print("Error: Blur value must be an float")
+                        continue
+                while True:
+                    size = input("Enter size value as an odd integer greater than or equal to 3: ")
+                    try:
+                        size = int(size)
+                    except:
+                        print("Error: Size value must be an integer")
+                        continue
+                    
+                    if size%2 == 0 or size < 3:
+                        print("Error: Size value must be odd and greater than or equal to 3.")
+                        continue
+                    else:
+                        break
+                ## Creates blurred image
+                outImage = fbl.process(inImage,blurValue,size)
+                break
+
+            ## Runs FastBlur Function and assures input values are (str, float, int)
+            elif(processName == "fastblur"):
+                print("You have chosen fastblur.")
+                blurValue = 0
+                size = 0
                 ## Checks if the values are correct data type and valid
                 while True:
                     blurValue = input("Enter blur value: ")
@@ -109,7 +132,7 @@ while True:
                 print("You have chosen rotate.")
                 degrees = 0
                 while True:
-                    degrees = input("Enter number of degrees to rotate (must be divisible by 90): ")
+                    degrees = input("Enter number of degrees to rotate (must be divisible by 90)")
 
                     ## Checks to see if input is a number
                     try:
@@ -137,8 +160,6 @@ while True:
             ## Prints an error if a function is not found
             else:
                 print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
-        if isKilled == True:
-            break    
 
     ## Creates and outputs the file to the directory
     if isKilled == False:
@@ -148,7 +169,7 @@ while True:
         ## Asks if user wishes to run again
         runDecision = input("Run Again? (Y/N): ").lower()
         if runDecision == "n":
-            print("Thank you for using the Python Deluxe Photo Editor!\n\n\n")
+            print("Thank you for Using Da Boys Photo Manipulator!\n\n\n")
             isKilled = True
             break
         else:
