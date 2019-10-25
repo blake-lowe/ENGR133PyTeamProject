@@ -46,7 +46,7 @@ def process(imageData, blur, size):
                         pixelY = j+dy
                     elif j+dy < 0:
                         pixelY = 0
-                    elif j+dy > len(imageData):
+                    elif j+dy > len(imageData[0]):
                         pixelY = -1
 
                     pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
