@@ -57,27 +57,29 @@ while True:
                 print("Killing program...")
                 break
 
-            ## Runs Blur Function and assures input values are (str, int, int)
+            ## Runs Blur Function and assures input values are (str, float, int)
             elif(processName == "blur"):
                 print("You have chosen blur.")
 
-                ## Checks if the values are integers
+                ## Checks if the values are correct data type and valid
                 while True:
                     blurValue = input("Enter blur value: ")
                     try:
-                        blurValue = int(blurValue)
+                        blurValue = float(blurValue)
                         break
                     except:
-                        print("Error: Blur value must be an integer")
+                        print("Error: Blur value must be an float")
                         continue
                 while True:
-                    size = input("Enter size value: ")
+                    size = input("Enter size value as an odd integer greater than or equal to 3: ")
                     try:
                         size = int(size)
                         break
                     except:
                         print("Error: Size value must be an integer")
                         continue
+                    if size%2 == 0 or size < 3:
+                        print("Error: Size value must be odd and greater than or equal to 3.")
                 ## Creates blurred image
                 outImage = bl.process(inImage,blurValue,size)
                 break
