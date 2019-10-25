@@ -47,7 +47,9 @@ while True:
             continue
 
 
-
+    if isKilled == True:
+        break        
+    
     if isKilled == False:
         ## Asks user for desired function
         while True:
