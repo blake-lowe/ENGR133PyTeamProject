@@ -70,6 +70,7 @@ while True:
                 print("You have chosen blur.")
                 blurValue = 0
                 size = 0
+                
                 ## Checks if the values are correct data type and valid
                 while True:
                     blurValue = input("Enter blur value: ")

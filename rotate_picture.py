@@ -16,20 +16,35 @@ Assignment Information
 
 
 import numpy as np
+## Rotates image based on specified degrees
 
-def rotate1(image): #ROTATES IMAGE 90 DEGREES COUNTERCLOCKWISE
-    h,w,c = image.shape #INTIALIZES VARIABLES FOR THE HEIGHT, WIDTH, AND COLORS OF THE SHAPE
+def rotate(image,degrees): 
 
-    empty_image = np.zeros([w,h,c]) #CREATES A NEW 0 MATRIX WITH WIDTH AND HEIGHT OPPOSITE TO THE ORIGINAL IMAGE
+    ## Will rotate image 90 degrees counterclockwise
+    if degrees == 90: 
+        h,w,c = image.shape 
+        empty_image = np.zeros([w,h,c]) ## Creates a new image that has opposite dimensions as original 
+        for i in range(h):
+            for j in range(w):
+                empty_image[-j-1,i] = image[i,j] 
+        return(empty_image)
+    ## Rotates image 180 degrees or mirrors over horizontal axis
+    elif degrees == 180: 
+        empty_image = np.empty([len(image),len(image[0]),len(image[0][0])]) ## Creates a new image that has same dimensions as original 
+        for i in range(len(image)):
+            for j in range(len(image[i])):
+                empty_image[i][j] = image[-i-1][-j-1]  
+        return empty_image
 
-    for i in range(h):
-        for j in range(w):
-            empty_image[j, i] = image[i,j-1] #ROTATES EACH PIXEL 90 DEGREES COUNTERCLOCKWISE
+    ## Rotates image 270 degrees counterclockwise
+    elif degrees == 270: 
+        h,w,c = image.shape 
+        empty_image = np.zeros([w,h,c]) ## Creates a new image that has opposite dimensions as original 
+        for i in range(h):
+            for j in range(w):
+                empty_image[j,-i-1] = image[i,j] 
+        return(empty_image)
+        
     
-    return(empty_image)
+        
 
-def rotate(image, n):
-  for i in range(0, n//90):
-      image = rotate1(image)
-
-  return(image)
