@@ -147,7 +147,7 @@ while True:
         ## Asks if user wishes to run again
         runDecision = input("Run Again? (Y/N): ").lower()
         if runDecision == "n":
-            print("Thank you for Using Da Boys Photo Manipulator!\n\n\n")
+            print("Thank you for using the Python Deluxe Photo Editor!\n\n\n")
             isKilled = True
             break
         else:
