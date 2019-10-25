@@ -8,14 +8,6 @@ import blur as bl
 import fastblur as fbl
 import os
 
-import import_file_to_array as ifta
-import image_mirroring as im
-import arraytoimage as ati
-import rotate_picture as rp
-import grayscale as gs
-import blur as bl
-import os
-
 name = input('Input output file name: ')
 
 # ## IMPORT TEST FILE TO ARRAY

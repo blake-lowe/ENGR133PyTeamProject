@@ -1,7 +1,7 @@
 '''
 ===============================================================================
 ENGR 133 Program Description 
-	This function rotates an image 90 degrees counterclockwise
+	This function rotates an image a specified number of degrees counterclockwise
 
 Assignment Information
 	Assignment:     Python Group Project
@@ -13,11 +13,10 @@ Assignment Information
 	
 ===============================================================================
 '''
-
-
 import numpy as np
-## Rotates image based on specified degrees
 
+
+## Rotates image based on specified degrees
 def rotate(image,degrees): 
 
     ## Will rotate image 90 degrees counterclockwise

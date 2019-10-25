@@ -30,6 +30,8 @@ while True:
     isKilled = False
     while True:
         infName = input("Enter name of file to process with extention (.png only): ")
+
+        ## Changes kill variable to true to quit program
         if(infName.lower() == "quit"):
             isKilled = True
             break
@@ -46,10 +48,11 @@ while True:
             print("File not found. Try again. (Type 'quit' to kill program)")
             continue
 
-
+    ## Quits program when kill variable is set true        
     if isKilled == True:
+        print("\n\n\n")
         break        
-    
+
     if isKilled == False:
         ## Asks user for desired function
         while True:
