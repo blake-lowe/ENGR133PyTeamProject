@@ -21,9 +21,11 @@ import numpy as np
 def process(imageData, blur, size):
     channelCount = len(imageData[0][0])#determine if RGB or RGBA
     kernel = getKernel(size, blur)
-    outimage = np.empty([len(imageData), len(imageData[0]), channelCount])#create empty image with same dimensions as original
+    outimage1 = np.empty([len(imageData), len(imageData[0]), channelCount])#create empty image with same dimensions
+    outimage2 = np.empty([len(imageData), len(imageData[0]), channelCount])#create empty image with same dimensionsas original
     #vertical blur only
     for i in range(0, len(imageData)):#for each row
+        #print(i)
         for j in range(0, len(imageData[0])):#for each column
             weightedAvg = np.zeros(channelCount)
 
@@ -36,18 +38,21 @@ def process(imageData, blur, size):
                     pixelY = 0
                 elif j+dy > len(imageData[0]):
                     pixelY = -1
-            pixelX = i
-            pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
+                pixelX = i
+                pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
 
-            for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
-                weightedAvg[c] += kernel[h]*pixel[c]
+                #for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
+                #    weightedAvg[c] += kernel[h]*pixel[c]
+                weightedAvg += np.multiply(kernel[h], pixel)
+                #weightedAvg += kernel[h]*pixel
 
-            outimage[i][j] = weightedAvg
+            outimage1[i][j] = weightedAvg
 
-    imageData = outimage
-
+    print("Halfway done!")
+    
     #horizontal blur only
     for i in range(0, len(imageData)):#for each row
+        #print(i)
         for j in range(0, len(imageData[0])):#for each column
             weightedAvg = np.zeros(channelCount)
 
@@ -60,17 +65,19 @@ def process(imageData, blur, size):
                     pixelX = 0
                 elif i+dx >= len(imageData):
                     pixelX = -1
-            pixelY = j
-            pixel = imageData[pixelX][pixelY]#get pixel data for target pixel
+                pixelY = j
+                pixel = outimage1[pixelX][pixelY]#get pixel data for target pixel
 
-            for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
-                weightedAvg[c] += kernel[h]*pixel[c]
+                #for c in range(0, len(weightedAvg)):#sum the corresponding ARGB or RGB numbers
+                #    weightedAvg[c] += kernel[k]*pixel[c]
+                weightedAvg += np.multiply(kernel[k], pixel)
+                #weightedAvg += kernel[h]*pixel
 
-            outimage[i][j] = weightedAvg
+            outimage2[i][j] = weightedAvg
 
     
             
-    return outimage
+    return outimage2
 
 def getKernel(size, stddev):
     kernel = []
@@ -79,7 +86,6 @@ def getKernel(size, stddev):
         x = i-center
         kernel.append(gaussian(x, stddev))
     kernel = normalizeArray(kernel)
-    print(sum(kernel))
     return kernel
 
 def gaussian(x, stddev):
