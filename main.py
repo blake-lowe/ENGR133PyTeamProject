@@ -130,6 +130,7 @@ while True:
             elif(processName == "mirror"):
                 print("You have chosen mirror.")
                 outImage = im.flipIt(inImage)
+                print("Image processing complete.")
                 break
 
             ## Prints an error if a function is not found
