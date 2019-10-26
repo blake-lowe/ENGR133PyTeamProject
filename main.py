@@ -107,7 +107,7 @@ while True:
                 print("You have chosen rotate.")
                 degrees = 0
                 while True:
-                    degrees = input("Enter number of degrees to rotate (must be divisible by 90)")
+                    degrees = input("Enter number of degrees to rotate (must be divisible by 90): ")
 
                     ## Checks to see if input is a number
                     try:
