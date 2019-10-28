@@ -135,7 +135,7 @@ while True:
 
             ## Prints an error if a function is not found
             else:
-                print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
+                print("Error: Input not recognized, please enter the name of a function. (Type 'quit' to kill program)")
 
     ## Creates and outputs the file to the directory
     if isKilled == False:
