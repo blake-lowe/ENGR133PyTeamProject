@@ -1,7 +1,7 @@
 '''
 ===============================================================================
 ENGR 133 Program Description 
-	This function takes an image array an mirrors the photo across the vertical axis. It then returns the image array of the mirrored image
+	This function takes an image array and mirrors the photo across the vertical axis. It then returns the image array of the mirrored image
 Assignment Information
 	Assignment:     Python Group Project
 	Author:         Marcus Lannie, mlannie@purdue.edu
