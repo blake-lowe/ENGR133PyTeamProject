@@ -45,7 +45,7 @@ while True:
 
         ## Repeats if the file isn't found
         except:
-            print("File not found. Try again. (Type 'quit' to kill program)")
+            print("File not found. Try again. (Type 'quit' to kill program)\n")
             continue
 
     ## Quits program when kill variable is set true        
@@ -56,7 +56,7 @@ while True:
     if isKilled == False:
         ## Asks user for desired function
         while True:
-            print("Functions: blur, grayscale, rotate, mirror")
+            print("Functions: blur, grayscale, rotate, mirror, reflect")
             processName = input("Enter name of function: ").lower()
             if(processName == "quit"):
                 isKilled = True
@@ -75,18 +75,18 @@ while True:
                         blurValue = float(blurValue)
                         break
                     except:
-                        print("Error: Blur value must be an float")
+                        print("Error: Blur value must be an float\n")
                         continue
                 while True:
                     size = input("Enter size value as an odd integer greater than or equal to 3: ")
                     try:
                         size = int(size)
                     except:
-                        print("Error: Size value must be an integer")
+                        print("Error: Size value must be an integer\n")
                         continue
                     
                     if size%2 == 0 or size < 3:
-                        print("Error: Size value must be odd and greater than or equal to 3.")
+                        print("Error: Size value must be odd and greater than or equal to 3.\n")
                         continue
                     else:
                         break
@@ -113,12 +113,12 @@ while True:
                     try:
                         degrees = int(degrees)
                     except:
-                        print("Error: Input must be numeric")
+                        print("Error: Input must be numeric\n")
                         continue
 
                     ## Checks if the number is a factor of 90
                     if degrees%90 != 0:
-                        print("Error: degrees must be divisible by 90")
+                        print("Error: degrees must be divisible by 90\n")
                         continue
                     else:
                         break
@@ -129,13 +129,49 @@ while True:
             ## Runs mirror function
             elif(processName == "mirror"):
                 print("You have chosen mirror.")
-                outImage = im.flipIt(inImage)
+                ## Loop to detect axis
+                while True:
+                    axisSelect = input("Select axis: Horizontal or vertical: ").lower()
+                    if axisSelect == "horizontal":
+                        print("You have chosen mirror over horizontal axis.")
+                        outImage = im.flipH(inImage)
+                        break
+                    elif axisSelect == "vertical":
+                        print("You have chosen mirror over vertical axis.")
+                        outImage = im.flipIt(inImage)
+                        break
+                    ## Prints error if the selection isn't recognized
+                    else:
+                        print("Error: selection not recognized. Enter 'vertical' or 'horizontal'\n")
+
+                print("Image processing complete.")
+                break
+            
+            ## Runs reflect function
+            elif processName == "reflect":
+                print("You have chosen reflect.")
+                ## Loop to detect axis
+                while True:
+                    axisSelect = input("Select axis: Horizontal or vertical: ").lower()
+                    if axisSelect == "horizontal":
+                        print("You have chosen a horizontal axis reflection.")
+                        outImage = im.mirrorH(inImage)
+                        break
+                    elif axisSelect == "vertical":
+                        print("You have chosen a vertical axis reflection.")
+                        outImage = im.mirrorV(inImage)
+                        break
+                    ## Prints error if the selection isn't recognized
+                    else:
+                        print("Error: selection not recognized. Enter 'vertical' or 'horizontal'\n")
+                        continue
                 print("Image processing complete.")
                 break
 
+
             ## Prints an error if a function is not found
             else:
-                print("Error: Input not recognized, please enter then name of a function. (Type 'quit' to kill program)")
+                print("Error: Input not recognized, please enter the name of a function. (Type 'quit' to kill program)\n")
 
     ## Creates and outputs the file to the directory
     if isKilled == False:
