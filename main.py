@@ -73,10 +73,15 @@ while True:
                     blurValue = input("Enter blur value: ")
                     try:
                         blurValue = float(blurValue)
-                        break
+                        if blurValue == 0:
+                            print("Error: Blur Value must be greater than 0\n")
+                            continue
+                        else:
+                            break
                     except:
                         print("Error: Blur value must be an float\n")
                         continue
+                    
                 while True:
                     size = input("Enter size value as an odd integer greater than or equal to 3: ")
                     try:
