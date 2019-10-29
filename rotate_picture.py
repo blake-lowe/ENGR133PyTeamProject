@@ -17,8 +17,8 @@ import numpy as np
 
 
 ## Rotates image based on specified degrees
-def rotate(image,degrees): 
-
+def rotate(image,degrees):
+    degrees%=360 
     ## Will rotate image 90 degrees counterclockwise
     if degrees == 90: 
         h,w,c = image.shape 
@@ -26,7 +26,8 @@ def rotate(image,degrees):
         for i in range(h):
             for j in range(w):
                 empty_image[-j-1,i] = image[i,j] 
-        return(empty_image)
+        return empty_image
+
     ## Rotates image 180 degrees or mirrors over horizontal axis
     elif degrees == 180: 
         empty_image = np.empty([len(image),len(image[0]),len(image[0][0])]) ## Creates a new image that has same dimensions as original 
@@ -42,7 +43,9 @@ def rotate(image,degrees):
         for i in range(h):
             for j in range(w):
                 empty_image[j,-i-1] = image[i,j] 
-        return(empty_image)
+        return empty_image
+    elif degrees == 0:
+        return image
         
     
         
