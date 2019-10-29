@@ -29,13 +29,13 @@ import os
 while True:
     isKilled = False
     while True:
-        infName = input("Enter name of file to process with extention (.png only): ")
+        infName = input("Enter name of file to process without extention (.png only): ")
 
         ## Changes kill variable to true to quit program
         if(infName.lower() == "quit"):
             isKilled = True
             break
-        filepath = os.getcwd()+ "/" + infName
+        filepath = os.getcwd()+ "/" + infName+ ".png"
 
         ## Converts image to an array after successful import
         try:
@@ -131,18 +131,18 @@ while True:
                 print("You have chosen mirror.")
                 ## Loop to detect axis
                 while True:
-                    axisSelect = input("Select axis: Horizontal or vertical: ").lower()
-                    if axisSelect == "horizontal":
+                    axisSelect = input("Select axis: Horizontal or vertical (H/V): ").lower()
+                    if axisSelect == "h":
                         print("You have chosen mirror over horizontal axis.")
                         outImage = im.flipH(inImage)
                         break
-                    elif axisSelect == "vertical":
+                    elif axisSelect == "v":
                         print("You have chosen mirror over vertical axis.")
                         outImage = im.flipIt(inImage)
                         break
                     ## Prints error if the selection isn't recognized
                     else:
-                        print("Error: selection not recognized. Enter 'vertical' or 'horizontal'\n")
+                        print("Error: selection not recognized. Enter 'v' or 'h' for vertical or horizontal respectively\n")
 
                 print("Image processing complete.")
                 break
@@ -152,18 +152,18 @@ while True:
                 print("You have chosen reflect.")
                 ## Loop to detect axis
                 while True:
-                    axisSelect = input("Select axis: Horizontal or vertical: ").lower()
-                    if axisSelect == "horizontal":
+                    axisSelect = input("Select axis: Horizontal or vertical (H/V): ").lower()
+                    if axisSelect == "h":
                         print("You have chosen a horizontal axis reflection.")
                         outImage = im.mirrorH(inImage)
                         break
-                    elif axisSelect == "vertical":
+                    elif axisSelect == "v":
                         print("You have chosen a vertical axis reflection.")
                         outImage = im.mirrorV(inImage)
                         break
                     ## Prints error if the selection isn't recognized
                     else:
-                        print("Error: selection not recognized. Enter 'vertical' or 'horizontal'\n")
+                        print("Error: selection not recognized. Enter 'v' or 'h' for vertical or horizontal respectively\n")
                         continue
                 print("Image processing complete.")
                 break
