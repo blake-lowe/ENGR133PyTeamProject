@@ -118,7 +118,7 @@ while True:
 
                     ## Checks if the number is a factor of 90
                     if degrees%90 != 0:
-                        print("Error: degrees must be divisible by 90\n")
+                        print("Error: degrees must be divisible by 90.\n")
                         continue
                     else:
                         break
